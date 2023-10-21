@@ -9,11 +9,11 @@
 
       <div class="collapse navbar-collapse" id="navbarsFurni">
         <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="home" routerLinkActive="active">Home</a>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/home']"  routerLinkActive="active">Home</a>
           </li>
           <li><a class="nav-link" >About us</a></li>
-          <li><a class="nav-link" routerLink="sky-gift" routerLinkActive="active">Sky Gift</a></li>
+          <li routerLinkActive="active"><a class="nav-link"[routerLink]="['/sky-gift']"  >Sky Gift</a></li>
           <li><a class="nav-link" >Contact us</a></li>
         </ul>
 
