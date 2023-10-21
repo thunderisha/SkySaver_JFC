@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import * as $ from 'jquery';
 import 'bootstrap';
 
 
@@ -13,7 +12,7 @@ export class TestimonialsComponent  implements AfterViewInit{
  
   ngAfterViewInit() {
     //const nativeElement = this.myElementRef.nativeElement as HTMLElement;
-    console.log(this.myElementRef)
+    // console.log(this.myElementRef)
    // nativeElement.style.display = 'none';
   }
 }
