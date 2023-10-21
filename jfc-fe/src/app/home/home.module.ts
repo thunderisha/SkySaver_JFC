@@ -8,6 +8,7 @@ import { MaterialModule } from '../modules/material.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProgressBarsComponent } from './home-page/image-test/progress-bars/progress-bars.component';
 import { CoreModule } from '../core/core.module';
+import { BirthdayGiftComponent } from './home-page/image-test/birthday-gift/birthday-gift.component';
 
 
 
@@ -17,7 +18,9 @@ import { CoreModule } from '../core/core.module';
     WhyChoseUsComponent,
     TestimonialsComponent,
     ImageTestComponent,
-    ProgressBarsComponent
+    ProgressBarsComponent,
+    BirthdayGiftComponent,
+    
   ],
   imports: [
     CommonModule,
