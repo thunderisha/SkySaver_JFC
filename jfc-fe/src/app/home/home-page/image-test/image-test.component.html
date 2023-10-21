@@ -1,43 +1,66 @@
-<div class="row ">
-  <app-progress-bars class="mb"></app-progress-bars>
+<div class="row">
+  <app-progress-bars></app-progress-bars>
 
-  <mat-card class="col-md-6 col-sm-6">
-    <mat-card-header class="d-d-flex justify-content-between mb-3">
-      <mat-card-title class="pt-2">Complete foto</mat-card-title>
-      <button mat-raised-button color="primary" (click)="nextStep()" [disabled]="step === 4">Buy ticket</button>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 1" [src]="quarterImage1"
-            alt="Quarter 1"></mat-grid-tile>
-        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 2" [src]="quarterImage2"
-            alt="Quarter 2"></mat-grid-tile>
-        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 3" [src]="quarterImage3"
-            alt="Quarter 3"></mat-grid-tile>
-        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 4" [src]="quarterImage4"
-            alt="Quarter 4"></mat-grid-tile>
-      </mat-grid-list>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="col-md-6 col-sm-6">
-    <mat-card-header class="d-d-flex justify-content-between mb-3">
-      <mat-card-title class="pt-2">Quiz here</mat-card-title>
-      <button mat-raised-button color="primary" (click)="nextStep()" [disabled]="step === 4">Buy ticket</button>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 1" [src]="quarterImage1"
-            alt="Quarter 1"></mat-grid-tile>
-        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 2" [src]="quarterImage2"
-            alt="Quarter 2"></mat-grid-tile>
-        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 3" [src]="quarterImage3"
-            alt="Quarter 3"></mat-grid-tile>
-        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 4" [src]="quarterImage4"
-            alt="Quarter 4"></mat-grid-tile>
-      </mat-grid-list>
-    </mat-card-content>
-  </mat-card>
-  <!-- You can now use it in app.component.html -->
-
-
+  <div class="row games mt-4">
+    <mat-card class="col-md-6 col-sm-6">
+      <mat-card-header class="d-d-flex justify-content-between mb-3">
+        <mat-card-title class="pt-2">Complete the picture</mat-card-title>
+        <button
+          mat-raised-button
+          [ngClass]="{ discoverButton: quarterImage1 == '' }"
+          (click)="nextStep()"
+          [disabled]="step === 4"
+        >
+          Discover More
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <div [ngClass]="{ overlay: quarterImage1 == '' }">
+          <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile class="img-puzzle-bg"
+              ><img *ngIf="step >= 1" [src]="quarterImage1" alt="Quarter 1"
+            /></mat-grid-tile>
+            <mat-grid-tile class="img-puzzle-bg">
+              <img *ngIf="step >= 2" [src]="quarterImage2" alt="Quarter 2"
+            /></mat-grid-tile>
+            <mat-grid-tile class="img-puzzle-bg">
+              <img *ngIf="step >= 3" [src]="quarterImage3" alt="Quarter 3"
+            /></mat-grid-tile>
+            <mat-grid-tile class="img-puzzle-bg"
+              ><img *ngIf="step >= 4" [src]="quarterImage4" alt="Quarter 4"
+            /></mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="col-md-6 col-sm-6">
+      <mat-card-header class="d-d-flex justify-content-between mb-3">
+        <mat-card-title class="pt-2">Quiz here</mat-card-title>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="nextStep()"
+          [disabled]="step === 4"
+        >
+          Buy ticket
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile class="img-puzzle-bg"
+            ><img *ngIf="step >= 1" [src]="quarterImage1" alt="Quarter 1"
+          /></mat-grid-tile>
+          <mat-grid-tile class="img-puzzle-bg">
+            <img *ngIf="step >= 2" [src]="quarterImage2" alt="Quarter 2"
+          /></mat-grid-tile>
+          <mat-grid-tile class="img-puzzle-bg">
+            <img *ngIf="step >= 3" [src]="quarterImage3" alt="Quarter 3"
+          /></mat-grid-tile>
+          <mat-grid-tile class="img-puzzle-bg"
+            ><img *ngIf="step >= 4" [src]="quarterImage4" alt="Quarter 4"
+          /></mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

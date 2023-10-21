@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatGridListModule} from '@angular/material/grid-list';
 import { ServicesService } from 'src/app/core/services.service';
 
 @Component({
@@ -28,7 +27,7 @@ export class ImageTestComponent implements OnInit{
 
   step = 1;
 
-  quarterImage1 = 'path_to_quarter_1.jpg';
+  quarterImage1 = '';
   quarterImage2 = 'path_to_quarter_2.jpg';
   quarterImage3 = 'path_to_quarter_3.jpg';
   quarterImage4 = 'path_to_quarter_4.jpg';
