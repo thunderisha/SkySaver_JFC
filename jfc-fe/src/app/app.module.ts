@@ -8,9 +8,13 @@ import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './modules/material.module';
 import { HomeModule } from './home/home.module';
 
+import { ImageTestComponent } from './image-test/image-test.component';
+// Import ng-circle-progress
+import { NgCircleProgressModule } from 'ng-circle-progress';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ImageTestComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +22,17 @@ import { HomeModule } from './home/home.module';
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
-    HomeModule
+    HomeModule,
+    // Specify ng-circle-progress as an import
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      // radius: 100,
+      // outerStrokeWidth: 16,
+      // innerStrokeWidth: 8,
+      // outerStrokeColor: "#78C000",
+      // innerStrokeColor: "#C7E596",
+      // animationDuration: 30
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

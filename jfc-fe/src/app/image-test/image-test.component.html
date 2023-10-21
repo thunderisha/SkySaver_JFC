@@ -1,0 +1,133 @@
+<div class="row m-3">
+  <mat-card class="col-md-12 col-sm-12 mb-3">
+    <mat-card-header>
+      <!-- <mat-card-subtitle>Your progress </mat-card-subtitle> -->
+      <mat-card-title>Your progress</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="mb-3">
+      <mat-grid-list cols="4" rowHeight="2:1" [gutterSize]="'10px'">
+        <mat-grid-tile>
+          <div class="">
+            <div class="d-block">
+            <circle-progress
+              [percent]="85"
+              [showUnits]="true"
+              [radius]="60"
+              [outerStrokeWidth]="6"
+
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#FF6347'"
+            [innerStrokeColor]="'#C7E596'"
+            [animation]="true"
+            [animationDuration]="300"></circle-progress>
+          </div>
+            <div class="d-block" style="text-align-last: center;">
+              <p>{{pointsToCollected}} / {{totalFlightnumberPerLevel}} Point to {{nextNevelToReach}}</p>
+            </div>
+          </div>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div>
+            <div class="d-block">
+              <circle-progress
+              [percent]="85"
+              [radius]="50"
+              [showUnits]="true"
+              [outerStrokeWidth]="6"
+                [innerStrokeWidth]="8"
+                [outerStrokeColor]="'#71C000'"
+                [innerStrokeColor]="'#C7E196'"
+                [animation]="true"
+                [animationDuration]="300"></circle-progress>
+            </div>
+            <div class="d-block" style="text-align-last: center;">
+              <p>{{priorityCheckInPointsLeft}} / {{totalFlightnumberPerLevel}} points for priority checkIn</p>
+            </div>
+          </div>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <div class="d-block">
+              <circle-progress
+              [percent]="85"
+              [radius]="50"
+              [showUnits]="true"
+              [outerStrokeWidth]="6"
+                [innerStrokeWidth]="8"
+                [outerStrokeColor]="'#71C000'"
+                [innerStrokeColor]="'#C7E196'"
+                [animation]="true"
+                [animationDuration]="300"></circle-progress>
+            </div>
+            <div class="d-block" style="text-align-last: center;">
+              <p>{{loungeAccessPointsLeft}} / {{totalFlightnumberPerLevel}} Points for Lounge Access</p>
+            </div>
+          </div>
+
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <div class="d-block">
+              <circle-progress
+              [percent]="85"
+              [radius]="50"
+              [showUnits]="true"
+              [outerStrokeWidth]="6"
+                [innerStrokeWidth]="8"
+                [outerStrokeColor]="'#71C000'"
+                [innerStrokeColor]="'#C7E196'"
+                [animation]="true"
+                [animationDuration]="300"></circle-progress>
+            </div>
+            <div class="d-block" style="text-align-last: center;">
+              <p>{{freeSeatUpgreadPointsLeft}} / {{totalFlightnumberPerLevel}} Points for free seat Upgrade</p>
+            </div>
+          </div>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="col-md-6 col-sm-6">
+    <mat-card-header class="d-d-flex justify-content-between mb-3">
+      <mat-card-title class="pt-2">Complete foto</mat-card-title>
+      <button mat-raised-button color="primary" (click)="nextStep()" [disabled]="step === 4">Buy ticket</button>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 1" [src]="quarterImage1"
+            alt="Quarter 1"></mat-grid-tile>
+        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 2" [src]="quarterImage2"
+            alt="Quarter 2"></mat-grid-tile>
+        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 3" [src]="quarterImage3"
+            alt="Quarter 3"></mat-grid-tile>
+        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 4" [src]="quarterImage4"
+            alt="Quarter 4"></mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="col-md-6 col-sm-6">
+    <mat-card-header class="d-d-flex justify-content-between mb-3">
+      <mat-card-title class="pt-2">Quiz here</mat-card-title>
+      <button mat-raised-button color="primary" (click)="nextStep()" [disabled]="step === 4">Buy ticket</button>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 1" [src]="quarterImage1"
+            alt="Quarter 1"></mat-grid-tile>
+        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 2" [src]="quarterImage2"
+            alt="Quarter 2"></mat-grid-tile>
+        <mat-grid-tile class="img-puzzle-bg"> <img *ngIf="step >= 3" [src]="quarterImage3"
+            alt="Quarter 3"></mat-grid-tile>
+        <mat-grid-tile class="img-puzzle-bg"><img *ngIf="step >= 4" [src]="quarterImage4"
+            alt="Quarter 4"></mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+  <!-- You can now use it in app.component.html -->
+
+
+</div>
