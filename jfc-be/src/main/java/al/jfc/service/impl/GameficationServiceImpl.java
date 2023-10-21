@@ -1,24 +1,29 @@
 package al.jfc.service.impl;
 
 import java.util.List;
+import java.util.jar.JarException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import al.jfc.dto.UserProfileDto;
+import al.jfc.exceptions.JFCException;
 import al.jfc.model.GameficationEvent;
 import al.jfc.model.Level;
 import al.jfc.model.PuzzleFile;
 import al.jfc.model.PuzzleLevel;
+import al.jfc.model.Reward;
 import al.jfc.model.User;
 import al.jfc.model.UserChallengeLevel;
 import al.jfc.repository.GameficationEventRepository;
 import al.jfc.repository.LevelRepository;
 import al.jfc.repository.PuzzleFileRepository;
 import al.jfc.repository.PuzzleLevelRepository;
+import al.jfc.repository.RewardRepository;
 import al.jfc.repository.UserChallengeLevelRepository;
 import al.jfc.repository.UserRepository;
 import al.jfc.service.GamificationService;
+import al.jfc.utils.Constants;
 
 @Service
 public class GameficationServiceImpl implements GamificationService{
@@ -35,6 +40,8 @@ public class GameficationServiceImpl implements GamificationService{
 	PuzzleFileRepository puzzleFileRepository;
 	@Autowired
 	UserChallengeLevelRepository userChallengeLevelRepository;
+	@Autowired 
+	RewardRepository rewardRepository;
 	
 	@Override
 	public UserProfileDto getUserProfileGamification(Integer userId) {
@@ -92,4 +99,14 @@ public class GameficationServiceImpl implements GamificationService{
 		userChallengeLevelRepository.save(userChallengeLevel);
 	}
 
+	@Override
+	public List<Reward> getLevelRewards(){
+		List<Reward> listRewards = rewardRepository.findAll();
+		if(!listRewards.isEmpty()) {
+			return listRewards;
+		}else {
+			throw new JFCException(Constants.NO_DATA);
+		}
+		
+	}
 }
