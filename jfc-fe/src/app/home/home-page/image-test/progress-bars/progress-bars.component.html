@@ -1,6 +1,6 @@
 <div class="hero1">
     <div class="container con">
-        
+
             <mat-card class="col-md-12 col-sm-12 mb-3">
                 <mat-card-header>
                     <!-- <mat-card-subtitle>Your progress </mat-card-subtitle> -->
@@ -11,14 +11,14 @@
                         <mat-grid-tile>
                             <div class="">
                                 <div class="d-block">
-                                    <circle-progress [percent]="85" [showUnits]="true" [radius]="60"
+                                    <circle-progress [percent]="(points/endPoint)*100" [showUnits]="true" [radius]="60"
                                         [outerStrokeWidth]="6" [innerStrokeWidth]="8" [outerStrokeColor]="'#FF6347'"
                                         [innerStrokeColor]="'#C7E596'" [animation]="true"
                                         [animationDuration]="300"></circle-progress>
                                 </div>
-                                <div class="d-block" style="text-align-last: center;">
-                                    <p>{{pointsToCollected}} / {{totalFlightnumberPerLevel}} Point to <br>
-                                        {{nextNevelToReach}} </p>
+                                <div class="d-block" style="text-align-last: center;" *ngIf="points">
+                                    <p>{{points}} / {{endPoint}} Points <br>
+                                        {{endPoint == 20 ? 'Rokkie' : endPoint == 40 ? 'Expert' : endPoint == 60 ? 'Master' : 'Super Master'}} </p>
                                 </div>
                             </div>
 
@@ -27,13 +27,13 @@
                         <mat-grid-tile>
                             <div>
                                 <div class="d-block">
-                                    <circle-progress [percent]="85" [radius]="60" [showUnits]="true"
+                                    <circle-progress [percent]="(points/40)*100" [radius]="60" [showUnits]="true"
                                         [outerStrokeWidth]="6" [innerStrokeWidth]="8" [outerStrokeColor]="'#71C000'"
                                         [innerStrokeColor]="'#C7E196'" [animation]="true"
                                         [animationDuration]="300"></circle-progress>
                                 </div>
                                 <div class="d-block" style="text-align-last: center;">
-                                    <p>{{priorityCheckInPointsLeft}} / {{totalFlightnumberPerLevel}} points for priority <br>
+                                    <p>{{points}} / 40 points for priority <br>
                                         checkIn</p>
                                 </div>
                             </div>
@@ -42,13 +42,13 @@
                         <mat-grid-tile>
                             <div>
                                 <div class="d-block">
-                                    <circle-progress [percent]="85" [radius]="60" [showUnits]="true"
+                                    <circle-progress [percent]="(points/60)*100" [radius]="60" [showUnits]="true"
                                         [outerStrokeWidth]="6" [innerStrokeWidth]="8" [outerStrokeColor]="'#71C000'"
                                         [innerStrokeColor]="'#C7E196'" [animation]="true"
                                         [animationDuration]="300"></circle-progress>
                                 </div>
                                 <div class="d-block" style="text-align-last: center;">
-                                    <p>{{loungeAccessPointsLeft}} / {{totalFlightnumberPerLevel}} Points for<br> Lounge
+                                    <p>{{points}} / 60 Points for<br> Lounge
                                         Access</p>
                                 </div>
                             </div>
@@ -57,13 +57,13 @@
                         <mat-grid-tile>
                             <div>
                                 <div class="d-block">
-                                    <circle-progress [percent]="85" [radius]="60" [showUnits]="true"
+                                    <circle-progress [percent]="(points/80)*100" [radius]="60" [showUnits]="true"
                                         [outerStrokeWidth]="6" [innerStrokeWidth]="8" [outerStrokeColor]="'#71C000'"
                                         [innerStrokeColor]="'#C7E196'" [animation]="true"
                                         [animationDuration]="300"></circle-progress>
                                 </div>
                                 <div class="d-block" style="text-align-last: center;">
-                                    <p>{{freeSeatUpgreadPointsLeft}} / {{totalFlightnumberPerLevel}} Points for free <br>
+                                    <p>{{points}} / 80 Points for free <br>
                                         seat Upgrade</p>
                                 </div>
                             </div>
@@ -72,6 +72,6 @@
                     </mat-grid-list>
                 </mat-card-content>
             </mat-card>
-       
+
     </div>
 </div>

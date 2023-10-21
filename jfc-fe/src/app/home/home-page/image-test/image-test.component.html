@@ -1,5 +1,5 @@
 <div class="row">
-  <app-progress-bars></app-progress-bars>
+  <app-progress-bars [points]="dataUserById?.points" [endPoint]="dataUserById?.level?.endPoint"></app-progress-bars>
 
   <div class="row games mt-4">
     <mat-card class="col-md-6 col-sm-6">
@@ -14,11 +14,12 @@
           Discover More
         </button>
       </mat-card-header>
+
       <mat-card-content>
         <div [ngClass]="{ overlay: quarterImage1 == '' }">
           <mat-grid-list cols="2" rowHeight="2:1">
             <mat-grid-tile class="img-puzzle-bg"
-              ><img *ngIf="step >= 1" [src]="quarterImage1" alt="Quarter 1"
+              ><img  [src]='safeImageUrl' alt="Quarter 1"
             /></mat-grid-tile>
             <mat-grid-tile class="img-puzzle-bg">
               <img *ngIf="step >= 2" [src]="quarterImage2" alt="Quarter 2"
@@ -65,3 +66,5 @@
     </mat-card>
   </div>
 </div>
+
+

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Subject, take, takeUntil } from 'rxjs';
 import { ServicesService } from 'src/app/core/services.service';
 
 @Component({
@@ -6,9 +8,25 @@ import { ServicesService } from 'src/app/core/services.service';
   templateUrl: './image-test.component.html',
   styleUrls: ['./image-test.component.scss']
 })
-export class ImageTestComponent implements OnInit{
+export class ImageTestComponent implements OnInit, OnDestroy{
 
-  constructor(private servicesService: ServicesService) {
+  private onDestroy$: Subject<void> = new Subject<void>();
+  step = 1;
+  dataUserById: any
+  dataUrl!: string
+  myBlob!: Blob;
+  safeImageUrl: any;
+  // quarterImage1 = 'path_to_quarter_1.jpg';
+  // quarterImage2 = 'path_to_quarter_2.jpg';
+  // quarterImage3 = 'path_to_quarter_3.jpg';
+  // quarterImage4 = 'path_to_quarter_4.jpg';
+
+  quarterImage1 = '';
+  quarterImage2 = 'path_to_quarter_2.jpg';
+  quarterImage3 = 'path_to_quarter_3.jpg';
+  quarterImage4 = 'path_to_quarter_4.jpg';
+
+  constructor(private servicesService: ServicesService,private sanitizer: DomSanitizer) {
 
   }
 
@@ -18,19 +36,23 @@ export class ImageTestComponent implements OnInit{
   }
 
   getProfilebyId() {
-    this.servicesService.getById(2).pipe().subscribe({
+    this.servicesService.getById(2).pipe(
+      take(1),
+      takeUntil(this.onDestroy$)
+    ).subscribe({
       next: (val) => {
-        console.log("val", val);
+        this.dataUserById = val
+        console.log("val", this.dataUserById );
+        //this.myBlob = new Blob([this.dataUserById.puzzleFiles[0].blob], { type: 'image/jpeg' });
+        let objectURL = 'data:image/jpeg;base64,' + this.dataUserById.puzzleFiles[0].blob;
+        this.safeImageUrl = this.sanitizer.bypassSecurityTrustUrl(objectURL)
+        console.log(this.safeImageUrl)
+          // element['thumbnail'] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
       }
     })
   }
 
-  step = 1;
 
-  quarterImage1 = '';
-  quarterImage2 = 'path_to_quarter_2.jpg';
-  quarterImage3 = 'path_to_quarter_3.jpg';
-  quarterImage4 = 'path_to_quarter_4.jpg';
 
   nextStep() {
     if (this.step < 4) {
@@ -56,5 +78,10 @@ formatSubtitle = (percent: number) : string => {
   //     this.step--;
   //   }
   // }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
 
 }
