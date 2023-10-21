@@ -23,9 +23,13 @@ public class GamificationController {
 
 	
 	@GetMapping("/user")
-	public ResponseEntity<Object> dettaglioAlloggio(int userId) {
+	public ResponseEntity<Object> getGamificationUserProfile(int userId) {
 		return ResponseHandler.generateResponse("OK", HttpStatus.OK, gamificationService.getUserProfileGamification(userId));
 	}
 	 
+	@GetMapping("/rewards")
+	public ResponseEntity<Object> getRewards() {
+		return ResponseHandler.generateResponse("OK", HttpStatus.OK, gamificationService.getLevelRewards());
+	}
 
 }
