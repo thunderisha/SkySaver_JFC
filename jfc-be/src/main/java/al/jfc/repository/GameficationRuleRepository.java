@@ -6,4 +6,6 @@ import al.jfc.model.GameficationRule;
 
 public interface GameficationRuleRepository extends JpaRepository<GameficationRule, Long>{
 
+	GameficationRule findByRuleName(String bookingRuleName);
+
 }
