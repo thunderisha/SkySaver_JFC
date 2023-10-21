@@ -7,6 +7,7 @@ import { ImageTestComponent } from './home-page/image-test/image-test.component'
 import { MaterialModule } from '../modules/material.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProgressBarsComponent } from './home-page/image-test/progress-bars/progress-bars.component';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -20,6 +21,7 @@ import { ProgressBarsComponent } from './home-page/image-test/progress-bars/prog
   ],
   imports: [
     CommonModule,
+    CoreModule,
     MaterialModule,
     NgCircleProgressModule.forRoot({
       // set defaults here

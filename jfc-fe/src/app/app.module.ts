@@ -11,10 +11,11 @@ import { HomeModule } from './home/home.module';
 import { ImageTestComponent } from './home/home-page/image-test/image-test.component';
 // Import ng-circle-progress
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -23,8 +24,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     SharedModule,
     MaterialModule,
     HomeModule,
+    CoreModule
     // Specify ng-circle-progress as an import
-  
+
   ],
   providers: [],
   bootstrap: [AppComponent]
