@@ -1,18 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ServicesService } from 'src/app/core/services.service';
 
 @Component({
   selector: 'app-image-test',
   templateUrl: './image-test.component.html',
   styleUrls: ['./image-test.component.scss']
 })
-export class ImageTestComponent {
+export class ImageTestComponent implements OnInit{
 
+  constructor(private servicesService: ServicesService) {
 
+  }
 
+  ngOnInit(): void {
+    this.getProfilebyId()
+    console.log("ktu")
+  }
+
+  getProfilebyId() {
+    this.servicesService.getById(2).pipe().subscribe({
+      next: (val) => {
+        console.log("val", val);
+      }
+    })
+  }
 
   step = 1;
-
 
   quarterImage1 = 'path_to_quarter_1.jpg';
   quarterImage2 = 'path_to_quarter_2.jpg';
