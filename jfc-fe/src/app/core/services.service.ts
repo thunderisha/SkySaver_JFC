@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class ServicesService {
-
+  apiUrl=environment.apiUrl;
+  private userDTO ='../assets/mock-files/userDTO.json' ;
   constructor(private httpClient: HttpClient) { }
 
   //http://localhost:8080/gamification/user/profile?userId=2
@@ -15,6 +16,15 @@ export class ServicesService {
 
   public getById(userId: number): Observable<any> {
     const params = new HttpParams().set('userId', userId)
-    return this.httpClient.get<any>(`${environment.apiUrl}/gamification/user/profile`, { params: params });
- }
+    return this.httpClient.get<any>(this.apiUrl +`/gamification/user/profile`, { params: params });
+  }
+
+
+  fetchContent(): Observable<any> {
+
+    return this.httpClient.get(this.userDTO);
+  }
+  public updateBook(request: any): Observable<any> {
+    return this.httpClient.put<any>(this.apiUrl + `/sky/saver/booking`, request)
+  }
 }

@@ -1,0 +1,69 @@
+ {
+    "bookingReference": "S2KF5A",
+    "tickets": [
+      {
+        "ticketNumber": "020-00000000",
+        "ticketingAirline": "LH",
+        "ticketStatus": "ACTIVE",
+        "issuedDate": "2023-10-21",
+        "traveller": {
+          "firstName": "John",
+          "lastName": "Doe",
+          "passengerType": "ADULT",
+          "document": {
+            "documentType": "PASSPORT",
+            "documentNumber": "ABC123456",
+            "personalNumber": "123456789",
+            "issuingCountry": "US",
+            "issuedDate": "2022-01-15",
+            "expiryDate": "2032-01-15"
+          },
+          "contact": {
+            "email": "johndoe@example.com",
+            "phone": "+1234567890",
+            "address": {
+              "street": "123 Main St",
+              "city": "Sample City",
+              "postalCode": "12345"
+            }
+          }
+        },
+        "bookedSegments": [
+          {
+            "origin": "JFK",
+            "destination": "LAX",
+            "flightNumber": "LH1000",
+            "flightDate": "2023-11-15",
+            "airlineCode": "LH",
+            "departureDate": "2023-11-15T08:00:00Z",
+            "arrivalDate": "2023-11-15T12:00:00Z",
+            "bookingClass": "ECONOMY",
+            "price": 500.00,
+            "taxPercentage": 10.0
+          }
+        ]
+      }
+    ],
+    "user": {
+      "userId": "12345",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "xhelili.silvana@gmail.com",
+      "phone": "+9876543210",
+      "address": {
+        "street": "456 Elm St",
+        "city": "Another City",
+        "postalCode": "54321"
+      },
+      "frequentFlyerNumber": "FF12345",
+      "document": {
+        "documentType": "PASSPORT",
+        "documentNumber": "XYZ789",
+        "personalNumber": "987654321",
+        "issuingCountry": "US",
+        "issuedDate": "2022-02-20",
+        "expiryDate": "2032-02-20"
+      },
+      "dateOfBirth": "1990-05-15"
+    }
+  }

@@ -7,11 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { MaterialModule } from './modules/material.module';
 import { HomeModule } from './home/home.module';
-
-import { ImageTestComponent } from './home/home-page/image-test/image-test.component';
-// Import ng-circle-progress
-import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CoreModule } from './core/core.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './loading.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +26,13 @@ import { CoreModule } from './core/core.module';
     // Specify ng-circle-progress as an import
 
   ],
-  providers: [],
+  providers: [
+  
+    {
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+    }
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
