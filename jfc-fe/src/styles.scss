@@ -127,6 +127,18 @@ a {
 	}
 }
 
+.hero1 {
+	background: $primary;
+	height: 223px;
+
+	padding: calc(4rem - 30px) 0 0rem 0;
+	@media (min-width: $md) {
+		padding: calc(4rem - 30px) 0 0rem 0;
+	}
+	@media (min-width: $lg) {
+		padding: calc(8rem - 30px) 0 0rem 0;
+	}
+}
 
 // Hero 
 .hero {
