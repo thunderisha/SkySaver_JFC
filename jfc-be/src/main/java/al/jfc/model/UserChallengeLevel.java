@@ -25,6 +25,10 @@ public class UserChallengeLevel implements Serializable {
 	//bi-directional many-to-one association to User
 	@OneToOne
 	private User user;
+	
+	private byte active;
+	
+	private String code;
 
 	public UserChallengeLevel() {
 	}
@@ -53,4 +57,21 @@ public class UserChallengeLevel implements Serializable {
 		this.user = user;
 	}
 
+	public byte getActive() {
+		return active;
+	}
+
+	public void setActive(byte active) {
+		this.active = active;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	
 }

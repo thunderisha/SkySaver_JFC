@@ -7,4 +7,6 @@ public interface GamificationService {
 	
 	public UserProfileDto getUserProfileGamification(Integer userId);
 
+	void updateUserLevel(int userId);
+
 }
