@@ -8,15 +8,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 })
 export class ImageTestComponent {
 
-  statusLevelOfuser: string = "silver";
-  nextNevelToReach: string = 'Gold'
-  pointsCollected: number = 18;
-  pointsToCollected: number = 7;
-  flightNumber: number = 10;
-  totalFlightnumberPerLevel = 25;
-  priorityCheckInPointsLeft = 12
-  loungeAccessPointsLeft = 10;
-  freeSeatUpgreadPointsLeft = 20
+
 
 
   step = 1;

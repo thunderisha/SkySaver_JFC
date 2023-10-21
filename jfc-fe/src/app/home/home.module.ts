@@ -6,6 +6,7 @@ import { TestimonialsComponent } from './home-page/testimonials/testimonials.com
 import { ImageTestComponent } from './home-page/image-test/image-test.component';
 import { MaterialModule } from '../modules/material.module';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ProgressBarsComponent } from './home-page/image-test/progress-bars/progress-bars.component';
 
 
 
@@ -14,7 +15,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     HomePageComponent,
     WhyChoseUsComponent,
     TestimonialsComponent,
-    ImageTestComponent
+    ImageTestComponent,
+    ProgressBarsComponent
   ],
   imports: [
     CommonModule,
