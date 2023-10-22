@@ -19,6 +19,11 @@ export class ServicesService {
     return this.httpClient.get<any>(this.apiUrl +`/gamification/user`, { params: params });
   }
 
+  public getBDyId(userId: number): Observable<any> {
+    const params = new HttpParams().set('userId', userId)
+    return this.httpClient.get<any>(this.apiUrl +`/user/birthday`, { params: params });
+  }
+
 
   fetchContent(): Observable<any> {
 

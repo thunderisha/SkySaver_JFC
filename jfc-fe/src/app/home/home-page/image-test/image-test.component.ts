@@ -16,6 +16,7 @@ export class ImageTestComponent implements OnInit, OnDestroy{
   dataUrl!: string
   myBlob!: Blob;
   safeImageUrl: any;
+  objectURL:any;
   // quarterImage1 = 'path_to_quarter_1.jpg';
   // quarterImage2 = 'path_to_quarter_2.jpg';
   // quarterImage3 = 'path_to_quarter_3.jpg';
@@ -25,7 +26,9 @@ export class ImageTestComponent implements OnInit, OnDestroy{
   quarterImage2 = 'path_to_quarter_2.jpg';
   quarterImage3 = 'path_to_quarter_3.jpg';
   quarterImage4 = 'path_to_quarter_4.jpg';
-
+  imageWidth: string = '163px'; // Set the default width in pixels
+  imageHeight: string = '121px';
+  isDisabled!:boolean;
   constructor(private servicesService: ServicesService,private sanitizer: DomSanitizer) {
 
   }
@@ -43,17 +46,23 @@ export class ImageTestComponent implements OnInit, OnDestroy{
       next: (val) => {
         this.dataUserById = val.data
         console.log("val", this.dataUserById );
-        //this.myBlob = new Blob([this.dataUserById.puzzleFiles[0].blob], { type: 'image/jpeg' });
-        let objectURL = 'data:image/jpeg;base64,' + this.dataUserById.puzzleFiles[0].blob;
-        this.safeImageUrl = this.sanitizer.bypassSecurityTrustUrl(objectURL)
-        console.log(this.safeImageUrl)
-          // element['thumbnail'] = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        this.quarterImage1 = 'data:image/jpeg;base64,' + this.dataUserById.puzzleFiles[0].blob;
+        this.quarterImage2 = 'data:image/jpeg;base64,' + this.dataUserById.puzzleFiles[1].blob;
+        this.quarterImage3 = 'data:image/jpeg;base64,' + this.dataUserById.puzzleFiles[2].blob;
+        this.quarterImage4 = 'data:image/jpeg;base64,' + this.dataUserById.puzzleFiles[3].blob;
       }
     })
   }
 
 
-
+  getBDyId() {
+    this.servicesService.getBDyId(2).pipe().subscribe({
+      next: (val) => {
+        console.log(val)
+        this.isDisabled=val.data;
+      }
+    })
+  }
   nextStep() {
     if (this.step < 4) {
       this.step++;

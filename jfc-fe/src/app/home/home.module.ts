@@ -11,6 +11,7 @@ import { MyBookingsComponent } from './home-page/my-bookings/my-bookings.compone
 import { MyRewardsComponent } from './home-page/my-rewards/my-rewards.component';
 import { TestimonialsComponent } from './home-page/testimonials/testimonials.component';
 import { WhyChoseUsComponent } from './home-page/why-chose-us/why-chose-us.component';
+import { BirthdayPopupComponent } from './birthday-popup/birthday-popup.component';
 
 
 
@@ -24,7 +25,8 @@ import { WhyChoseUsComponent } from './home-page/why-chose-us/why-chose-us.compo
     BirthdayGiftComponent,
     
     MyBookingsComponent,
-    MyRewardsComponent
+    MyRewardsComponent,
+    BirthdayPopupComponent
   ],
   imports: [
     CommonModule,
