@@ -2,6 +2,7 @@ package al.jfc.service.impl;
 
 import java.util.List;
 import java.util.jar.JarException;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,11 +63,17 @@ public class GameficationServiceImpl implements GamificationService{
 			level = levelRepository.getLevel(points);
 			userProfile.setLevel(level);
 		}
+		
+		
 		if(level != null) {
+			//Ketu eshte formula ku kemi vendosur qe sa puzzle do shfaqim (ne momentin qe piket shtohen me 5)
+			int rowToShow = (points - (20 * (((int)level.getId())-1)))/5;
 			PuzzleLevel puzzleLevel = puzzleLevelRepository.findByLevel(level.getId());
 			if(puzzleLevel != null) {
 				List<PuzzleFile> listFilePuzzle = puzzleFileRepository.findByPuzzle(puzzleLevel.getPuzzle().getIdpuzzle());
-				userProfile.setPuzzleFiles(listFilePuzzle);
+				List<PuzzleFile> listPuzzleToShow = listFilePuzzle.stream().filter(el -> el.getRow()<= rowToShow)
+			    .collect(Collectors.toList());
+				userProfile.setPuzzleFiles(listPuzzleToShow);
 			}
 		}
 		return userProfile;
