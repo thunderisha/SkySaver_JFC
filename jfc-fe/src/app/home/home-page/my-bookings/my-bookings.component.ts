@@ -4,6 +4,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
+export interface FlightData {
+  flightNumber: string;
+  ticketNumber: string;
+  departureIATA: string;
+  departureTime: string;
+  arrivalIATA: string;
+  arrivalTime: string;
+}
+
 @Component({
   selector: 'app-my-bookings',
   templateUrl: './my-bookings.component.html',
@@ -11,44 +20,94 @@ import { MatTableDataSource } from '@angular/material/table';
 
 })
 export class MyBookingsComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<MyBookings>(ELEMENT_DATA);
+
+  displayedColumns: string[] = [
+    'flightNumber',
+    'ticketNumber',
+    'departureIATA',
+    'departureTime',
+    'arrivalIATA',
+    'arrivalTime',
+  ];
+  
+  dataSource: MatTableDataSource<FlightData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  constructor() {
+    const data: FlightData[] = [
+      {
+        flightNumber: 'AF234',
+        ticketNumber: 'T54321',
+        departureIATA: 'CDG',
+        departureTime: '9:30 AM',
+        arrivalIATA: 'AMS',
+        arrivalTime: '11:00 AM',
+      },
+      {
+        flightNumber: 'TK567',
+        ticketNumber: 'T12345',
+        departureIATA: 'IST',
+        departureTime: '12:00 PM',
+        arrivalIATA: 'BCN',
+        arrivalTime: '2:00 PM',
+      },
+      {
+        flightNumber: 'EI890',
+        ticketNumber: 'T67890',
+        departureIATA: 'DUB',
+        departureTime: '10:15 AM',
+        arrivalIATA: 'SVO',
+        arrivalTime: '3:30 PM',
+      },
+      {
+        flightNumber: 'AA123',
+        ticketNumber: 'T12345',
+        departureIATA: 'JFK',
+        departureTime: '10:00 AM',
+        arrivalIATA: 'LAX',
+        arrivalTime: '1:00 PM',
+      },
+      {
+        flightNumber: 'DL456',
+        ticketNumber: 'T67890',
+        departureIATA: 'ATL',
+        departureTime: '9:30 AM',
+        arrivalIATA: 'ORD',
+        arrivalTime: '11:30 AM',
+      },
+      {
+        flightNumber: 'LH101',
+        ticketNumber: 'T98765',
+        departureIATA: 'FRA',
+        departureTime: '8:00 AM',
+        arrivalIATA: 'CDG',
+        arrivalTime: '9:30 AM',
+      },
+      {
+        flightNumber: 'BA456',
+        ticketNumber: 'T54321',
+        departureIATA: 'LHR',
+        departureTime: '11:30 AM',
+        arrivalIATA: 'MAD',
+        arrivalTime: '1:30 PM',
+      },
+      {
+        flightNumber: 'AZ789',
+        ticketNumber: 'T24680',
+        departureIATA: 'FCO',
+        departureTime: '7:45 AM',
+        arrivalIATA: 'ATH',
+        arrivalTime: '10:15 AM',
+      },
+    ];
+
+    this.dataSource = new MatTableDataSource(data);
+  }
+
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 }
-
-export interface MyBookings {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: MyBookings[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  { position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na' },
-  { position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg' },
-  { position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al' },
-  { position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si' },
-  { position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P' },
-  { position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S' },
-  { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
-  { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
-  { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
-];
