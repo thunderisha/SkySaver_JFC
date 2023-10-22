@@ -32,7 +32,7 @@ CREATE TABLE `gamefication_events` (
   KEY `fk_gamefication_rule_id_idx` (`rule_id`),
   CONSTRAINT `fk_gamefication_events_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_gamefication_rule_id` FOREIGN KEY (`rule_id`) REFERENCES `gamefication_rules` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `gamefication_events` (
 
 LOCK TABLES `gamefication_events` WRITE;
 /*!40000 ALTER TABLE `gamefication_events` DISABLE KEYS */;
-INSERT INTO `gamefication_events` VALUES (1,2,1,NULL);
+INSERT INTO `gamefication_events` VALUES (1,2,1,NULL),(2,2,1,NULL),(3,2,1,NULL);
 /*!40000 ALTER TABLE `gamefication_events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,6 +400,33 @@ LOCK TABLES `questions` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `rewards`
+--
+
+DROP TABLE IF EXISTS `rewards`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `rewards` (
+  `idreward` int NOT NULL,
+  `level_id` bigint NOT NULL,
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`idreward`),
+  KEY `fk_reward_level_id_idx` (`level_id`),
+  CONSTRAINT `fk_reward_level_id` FOREIGN KEY (`level_id`) REFERENCES `levels` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rewards`
+--
+
+LOCK TABLES `rewards` WRITE;
+/*!40000 ALTER TABLE `rewards` DISABLE KEYS */;
+INSERT INTO `rewards` VALUES (1,1,'5% Discount Hotel + Flight'),(2,2,'10% Discount + Priority Check In'),(3,3,'10% Discount + Lounge Access '),(4,4,'20% Discount + Free Seat Upgrade');
+/*!40000 ALTER TABLE `rewards` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_challenge_level`
 --
 
@@ -410,12 +437,14 @@ CREATE TABLE `user_challenge_level` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `challenge_level_id` bigint NOT NULL,
   `user_id` bigint NOT NULL,
+  `active` tinyint NOT NULL,
+  `code` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   KEY `fk_user_challenge_level_challenge_level_id_idx` (`challenge_level_id`),
   CONSTRAINT `fk_user_challenge_level_challenge_level_id` FOREIGN KEY (`challenge_level_id`) REFERENCES `levels` (`id`),
   CONSTRAINT `fk_user_challenge_level_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,6 +453,7 @@ CREATE TABLE `user_challenge_level` (
 
 LOCK TABLES `user_challenge_level` WRITE;
 /*!40000 ALTER TABLE `user_challenge_level` DISABLE KEYS */;
+INSERT INTO `user_challenge_level` VALUES (1,1,2,0,NULL);
 /*!40000 ALTER TABLE `user_challenge_level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,6 +526,7 @@ CREATE TABLE `users` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
+  `birthday` date NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
@@ -507,7 +538,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@admin.admin','admin'),(2,'xhelili.silvana@gmail.com','Silvana'),(3,'regi@gmail.com','Regi'),(4,'klerina@gmail.com','Klerina'),(5,'fjona@gmail.com','Fjona'),(6,'adela@gmail.com','Adela');
+INSERT INTO `users` VALUES (1,'admin@admin.admin','admin','2023-10-22'),(2,'xhelili.silvana@gmail.com','Silvana','2023-10-23'),(3,'regi@gmail.com','Regi','2023-10-22'),(4,'klerina@gmail.com','Klerina','2023-10-22'),(5,'fjona@gmail.com','Fjona','2023-10-22'),(6,'adela@gmail.com','Adela','2023-10-22');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -520,4 +551,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-21 17:50:13
+-- Dump completed on 2023-10-22  1:51:23
