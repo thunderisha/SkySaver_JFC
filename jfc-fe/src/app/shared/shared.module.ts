@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { SpinerComponent } from './spiner/spiner.component';
+import { InformationComponent } from './information/information.component';
 
 
 
@@ -11,7 +12,8 @@ import { SpinerComponent } from './spiner/spiner.component';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SpinerComponent
+    SpinerComponent,
+    InformationComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { SpinerComponent } from './spiner/spiner.component';
   exports:[
     HeaderComponent,
     FooterComponent,
-    SpinerComponent
+    SpinerComponent,
+    InformationComponent
   ]
 })
 export class SharedModule { }

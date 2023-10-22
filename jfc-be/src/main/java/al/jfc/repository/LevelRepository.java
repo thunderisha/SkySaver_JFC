@@ -10,6 +10,6 @@ import al.jfc.model.Level;
 
 public interface LevelRepository extends JpaRepository<Level, Long>{
 	
-	@Query("SELECT l FROM Level l WHERE l.startPoint < :point AND l.endPoint > :point")
+	@Query("SELECT l FROM Level l WHERE l.startPoint < :point AND l.endPoint >= :point")
     Level getLevel(int point);
 }

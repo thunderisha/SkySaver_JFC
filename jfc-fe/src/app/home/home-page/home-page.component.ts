@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { data } from 'jquery';
 import { ServicesService } from 'src/app/core/services.service';
+import { InformationComponent } from 'src/app/shared/information/information.component';
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +12,7 @@ import { ServicesService } from 'src/app/core/services.service';
 export class HomePageComponent {
 
   userDTO: any = {};
-  constructor(private servicesService: ServicesService) {
+  constructor(private servicesService: ServicesService,private dialog: MatDialog,) {
 
   }
 
