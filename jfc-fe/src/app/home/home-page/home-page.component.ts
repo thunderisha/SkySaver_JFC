@@ -23,7 +23,12 @@ export class HomePageComponent {
         this.userDTO = val;
         this.servicesService.updateBook(this.userDTO).pipe().subscribe({
           next: (val) => {
-            console.log("val", val);
+            if (val.message === 'OK') { // Adjust this condition as needed
+              // Open the Bootstrap modal
+              $('#successModal').modal('show');
+            }else{
+              $('#nonsuccessModal').modal('show');
+            }
           }
         })
       }

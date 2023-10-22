@@ -20,3 +20,37 @@
 </div>
 <app-why-chose-us></app-why-chose-us>
 <app-testimonials></app-testimonials>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="successModal">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div id="checkIcon">
+          <mat-icon>airplanemode_active</mat-icon>
+        </div>
+        <div class="mt-4 py-2">
+          <p class="px-4 pb-0 mb-1 text-secondary">Successful</p>
+          <h4 class="h5">Your booking is confirmed</h4>
+        </div>
+        <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="nonsuccessModal">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div id="checkIcon">
+          <mat-icon>airplanemode_active</mat-icon>
+        </div>
+        <div class="mt-4 py-2">
+          <p class="px-4 pb-0 mb-1 text-secondary"> Non Successful</p>
+          <h4 class="h5">Your booking is non confirmed. Something went wrong.</h4>
+        </div>
+        <div class="py-1"><button type="button" class="btn btn-sm btn-outline-success rounded-pill px-5" data-bs-dismiss="modal">OK</button></div>
+      </div>
+    </div>
+  </div>
+</div>
