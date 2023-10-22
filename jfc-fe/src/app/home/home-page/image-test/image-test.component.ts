@@ -41,7 +41,7 @@ export class ImageTestComponent implements OnInit, OnDestroy{
       takeUntil(this.onDestroy$)
     ).subscribe({
       next: (val) => {
-        this.dataUserById = val
+        this.dataUserById = val.data
         console.log("val", this.dataUserById );
         //this.myBlob = new Blob([this.dataUserById.puzzleFiles[0].blob], { type: 'image/jpeg' });
         let objectURL = 'data:image/jpeg;base64,' + this.dataUserById.puzzleFiles[0].blob;

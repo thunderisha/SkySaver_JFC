@@ -16,7 +16,7 @@ export class ServicesService {
 
   public getById(userId: number): Observable<any> {
     const params = new HttpParams().set('userId', userId)
-    return this.httpClient.get<any>(this.apiUrl +`/gamification/user/profile`, { params: params });
+    return this.httpClient.get<any>(this.apiUrl +`/gamification/user`, { params: params });
   }
 
 
@@ -25,6 +25,6 @@ export class ServicesService {
     return this.httpClient.get(this.userDTO);
   }
   public updateBook(request: any): Observable<any> {
-    return this.httpClient.put<any>(this.apiUrl + `/sky/saver/booking`, request)
+    return this.httpClient.put<any>(this.apiUrl + `/booking`, request)
   }
 }

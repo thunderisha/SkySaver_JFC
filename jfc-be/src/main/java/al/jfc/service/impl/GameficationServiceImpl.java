@@ -87,16 +87,18 @@ public class GameficationServiceImpl implements GamificationService{
 		if(points != 0) {
 			level = levelRepository.getLevel(points);
 		}
-		
-		UserChallengeLevel userChallengeLevelExisting = userChallengeLevelRepository.findByUser((long)userId);
+		if(level != null){
 
-		UserChallengeLevel userChallengeLevel = new UserChallengeLevel();
-		if(userChallengeLevelExisting != null) {
-			userChallengeLevel = userChallengeLevelExisting;
+			UserChallengeLevel userChallengeLevelExisting = userChallengeLevelRepository.findByUser((long)userId);
+
+			UserChallengeLevel userChallengeLevel = new UserChallengeLevel();
+			if(userChallengeLevelExisting != null) {
+				userChallengeLevel = userChallengeLevelExisting;
+			}
+			userChallengeLevel.setUser(user);
+			userChallengeLevel.setLevel(level);
+			userChallengeLevelRepository.save(userChallengeLevel);
 		}
-		userChallengeLevel.setUser(user);
-		userChallengeLevel.setLevel(level);
-		userChallengeLevelRepository.save(userChallengeLevel);
 	}
 
 	@Override
