@@ -16,6 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `booking_user`
+--
+
+DROP TABLE IF EXISTS `booking_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `booking_user` (
+  `idbooking` bigint NOT NULL AUTO_INCREMENT,
+  `ticket_id` bigint DEFAULT NULL,
+  `destination` varchar(45) DEFAULT NULL,
+  `departureDate` datetime DEFAULT NULL,
+  `arrivalDate` datetime DEFAULT NULL,
+  `bookingClass` varchar(45) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`idbooking`),
+  KEY `fk_booking_user_ticket_id_idx` (`ticket_id`),
+  CONSTRAINT `fk_booking_user_ticket_id` FOREIGN KEY (`ticket_id`) REFERENCES `ticket` (`idticket`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `booking_user`
+--
+
+LOCK TABLES `booking_user` WRITE;
+/*!40000 ALTER TABLE `booking_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `booking_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gamefication_events`
 --
 
@@ -32,7 +62,7 @@ CREATE TABLE `gamefication_events` (
   KEY `fk_gamefication_rule_id_idx` (`rule_id`),
   CONSTRAINT `fk_gamefication_events_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_gamefication_rule_id` FOREIGN KEY (`rule_id`) REFERENCES `gamefication_rules` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +71,7 @@ CREATE TABLE `gamefication_events` (
 
 LOCK TABLES `gamefication_events` WRITE;
 /*!40000 ALTER TABLE `gamefication_events` DISABLE KEYS */;
-INSERT INTO `gamefication_events` VALUES (1,2,1,NULL),(2,2,1,NULL),(3,2,1,NULL);
+INSERT INTO `gamefication_events` VALUES (1,2,1,NULL),(2,2,1,NULL),(3,2,1,NULL),(4,2,1,NULL),(5,2,1,NULL),(6,2,1,NULL),(7,2,1,NULL),(8,2,1,NULL),(9,2,1,NULL);
 /*!40000 ALTER TABLE `gamefication_events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -427,6 +457,60 @@ INSERT INTO `rewards` VALUES (1,1,'5% Discount Hotel + Flight'),(2,2,'10% Discou
 UNLOCK TABLES;
 
 --
+-- Table structure for table `segment`
+--
+
+DROP TABLE IF EXISTS `segment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `segment` (
+  `idsegment` bigint NOT NULL AUTO_INCREMENT,
+  `arrivalDate` varchar(45) DEFAULT NULL,
+  `bookingClass` varchar(45) DEFAULT NULL,
+  `departureDate` varchar(45) DEFAULT NULL,
+  `destination` varchar(45) DEFAULT NULL,
+  `origin` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idsegment`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `segment`
+--
+
+LOCK TABLES `segment` WRITE;
+/*!40000 ALTER TABLE `segment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `segment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ticket`
+--
+
+DROP TABLE IF EXISTS `ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ticket` (
+  `idticket` bigint NOT NULL AUTO_INCREMENT,
+  `ticketNumber` varchar(45) DEFAULT NULL,
+  `ticketStatus` varchar(45) DEFAULT NULL,
+  `segment_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`idticket`),
+  KEY `fk_ticket_segment_id_idx` (`segment_id`),
+  CONSTRAINT `fk_ticket_segment_id` FOREIGN KEY (`segment_id`) REFERENCES `segment` (`idsegment`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ticket`
+--
+
+LOCK TABLES `ticket` WRITE;
+/*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_challenge_level`
 --
 
@@ -453,7 +537,7 @@ CREATE TABLE `user_challenge_level` (
 
 LOCK TABLES `user_challenge_level` WRITE;
 /*!40000 ALTER TABLE `user_challenge_level` DISABLE KEYS */;
-INSERT INTO `user_challenge_level` VALUES (1,1,2,0,NULL);
+INSERT INTO `user_challenge_level` VALUES (1,3,2,0,NULL);
 /*!40000 ALTER TABLE `user_challenge_level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -551,4 +635,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-22  1:51:23
+-- Dump completed on 2023-10-22  6:00:40

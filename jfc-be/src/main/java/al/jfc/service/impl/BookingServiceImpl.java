@@ -43,7 +43,7 @@ public class BookingServiceImpl implements BookingService{
 			gameficationEvent.setRule(gameficationRuleRepository.findByRuleName(Constants.BOOKING_RULE_NAME));
 			gameficationEventRepository.save(gameficationEvent);
 			gamificationService.updateUserLevel((int)user.getId());
-			bookingUserRepository.save(bookingMapper.toEntity(bookingRequest));
+			//bookingUserRepository.save(bookingMapper.toEntity(bookingRequest));
 		}else {
 			throw new JFCException(Constants.USER_DOSENT_EXIST);
 		}

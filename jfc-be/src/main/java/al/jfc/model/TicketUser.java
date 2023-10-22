@@ -22,8 +22,10 @@ public class TicketUser {
 	@Column(name = "idticket")
 	private long idticket;
 	
+	@Column(name = "ticketNumber")
 	private String ticketNumber;
 	
+	@Column(name = "ticketStatus")
 	private String ticketStatus;
 	
 	@OneToMany(mappedBy = "idsegment", cascade = CascadeType.ALL, orphanRemoval = true)
