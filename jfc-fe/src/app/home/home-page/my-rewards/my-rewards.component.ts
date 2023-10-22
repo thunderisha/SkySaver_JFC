@@ -53,8 +53,17 @@ export class MyRewardsComponent {
 
   constructor(private servicesService: ServicesService) { }
 
-  ngOnInit() {
+  ngOnInit(){
+    this.getRewards()
+  }
 
+  getRewards() {
+    this.servicesService.getRewards().pipe().subscribe({
+      next: (val) => {
+        console.log(val)
+       this.rewardsList=val.data;
+      }
+    })
   }
 
 }

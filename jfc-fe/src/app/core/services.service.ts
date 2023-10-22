@@ -24,6 +24,10 @@ export class ServicesService {
     return this.httpClient.get<any>(this.apiUrl +`/user/birthday`, { params: params });
   }
 
+  public getRewards(): Observable<any> {
+   
+    return this.httpClient.get<any>(this.apiUrl +`/gamification/rewards`);
+  }
 
   fetchContent(): Observable<any> {
 
