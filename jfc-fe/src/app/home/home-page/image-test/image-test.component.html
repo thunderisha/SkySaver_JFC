@@ -4,7 +4,7 @@
   <div class="row games mt-4">
     <mat-card class="col-md-6 col-sm-6">
       <mat-card-header class="d-d-flex justify-content-between mb-3">
-        <mat-card-title class="pt-2">Complete the picture</mat-card-title>
+        <mat-card-title class="pt-2">Book more to complete the puzzle</mat-card-title>
         <button
           mat-raised-button
           [ngClass]="{ discoverButton: quarterImage1 == '' }"
@@ -38,7 +38,7 @@
       <mat-card-header class="d-d-flex justify-content-between mb-3">
         <mat-card-title class="pt-2">Collect your birthday gift</mat-card-title>
         <button
-        mat-raised-button [ngClass]="{ discoverButton: quarterImage1 == '' }" [disabled]="!isDisabled"
+        mat-raised-button [ngClass]="{ discoverButton: quarterImage1 == '' }" [disabled]="isDisabled"
         data-bs-toggle="modal" data-bs-target="#couponModal"
       >
         Collect

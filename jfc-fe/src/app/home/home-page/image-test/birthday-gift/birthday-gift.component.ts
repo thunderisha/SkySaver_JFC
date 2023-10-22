@@ -26,7 +26,7 @@ export class BirthdayGiftComponent {
   }
 
   getBDyId() {
-    this.servicesService.getBDyId(2).pipe().subscribe({
+    this.servicesService.getBDyId(3).pipe().subscribe({
       next: (val) => {
         console.log(val)
         this.isDisabled=val.data;
