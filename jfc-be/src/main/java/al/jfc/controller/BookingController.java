@@ -41,6 +41,11 @@ public class BookingController{
 		bookingService.createOrUpdateBooking(bookingData);
         return ResponseHandler.generateResponse("OK", HttpStatus.OK, Constants.BOOKING_SUCCESS);
     }
+	
+	@GetMapping("/of/user")
+	public ResponseEntity<Object> getGamificationUserProfile(int userId) {
+		return ResponseHandler.generateResponse("OK", HttpStatus.OK, bookingService.findUserBookings(userId));
+	}
   
     
 }
